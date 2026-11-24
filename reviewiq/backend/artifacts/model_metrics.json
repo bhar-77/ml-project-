@@ -1,0 +1,217 @@
+{
+  "selected_model": "TF-IDF + Logistic Regression",
+  "selection_criterion": "Highest Macro F1-score on held-out 20% stratified test set",
+  "trained_at": "2026-11-18T05:40:50.398851+00:00",
+  "random_seed": 42,
+  "test_split_ratio": 0.2,
+  "leakage_prevention": "Stratified train/test split is performed strictly before TF-IDF vocabulary and IDF estimation. Vectorizers are fit exclusively inside sklearn Pipelines on training rows.",
+  "dataset": {
+    "name": "Amazon Reviews 2023 \u2014 Subscription Boxes (McAuley Lab)",
+    "source_url": "https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023",
+    "file": "amazon_reviews_2023_subscription_boxes.csv",
+    "label_methodology": "Rating-derived proxy labels (1-2 stars = Negative, 3 stars = Neutral, 4-5 stars = Positive). These are proxy labels inferred from star ratings, not verified human sentiment annotations.",
+    "cleaning": {
+      "raw_rows": 16016,
+      "missing_text_removed": 16,
+      "duplicates_removed": 206,
+      "invalid_rating_removed": 0,
+      "valid_rows": 15794
+    },
+    "train_samples": 12635,
+    "test_samples": 3159,
+    "total_samples": 15794,
+    "unique_products": 493,
+    "class_distribution": {
+      "train": {
+        "Negative": 3163,
+        "Neutral": 1369,
+        "Positive": 8103
+      },
+      "test": {
+        "Negative": 791,
+        "Neutral": 342,
+        "Positive": 2026
+      }
+    }
+  },
+  "selected_metrics": {
+    "model_name": "TF-IDF + Logistic Regression",
+    "accuracy": 0.8221,
+    "macro_f1": 0.7025,
+    "weighted_f1": 0.8304,
+    "macro_precision": 0.693,
+    "macro_recall": 0.717,
+    "per_class": {
+      "Negative": {
+        "precision": 0.7515,
+        "recall": 0.78,
+        "f1_score": 0.7655,
+        "support": 791
+      },
+      "Neutral": {
+        "precision": 0.3716,
+        "recall": 0.4737,
+        "f1_score": 0.4165,
+        "support": 342
+      },
+      "Positive": {
+        "precision": 0.9558,
+        "recall": 0.8973,
+        "f1_score": 0.9257,
+        "support": 2026
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "Negative",
+        "Neutral",
+        "Positive"
+      ],
+      "matrix": [
+        [
+          617,
+          141,
+          33
+        ],
+        [
+          129,
+          162,
+          51
+        ],
+        [
+          75,
+          133,
+          1818
+        ]
+      ]
+    },
+    "confidence_stats": {
+      "mean_confidence": 0.7619,
+      "mean_confidence_correct": 0.802,
+      "mean_confidence_incorrect": 0.5765
+    }
+  },
+  "model_comparison": [
+    {
+      "model_name": "TF-IDF + Logistic Regression",
+      "accuracy": 0.8221,
+      "macro_f1": 0.7025,
+      "weighted_f1": 0.8304,
+      "macro_precision": 0.693,
+      "macro_recall": 0.717,
+      "per_class": {
+        "Negative": {
+          "precision": 0.7515,
+          "recall": 0.78,
+          "f1_score": 0.7655,
+          "support": 791
+        },
+        "Neutral": {
+          "precision": 0.3716,
+          "recall": 0.4737,
+          "f1_score": 0.4165,
+          "support": 342
+        },
+        "Positive": {
+          "precision": 0.9558,
+          "recall": 0.8973,
+          "f1_score": 0.9257,
+          "support": 2026
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "Negative",
+          "Neutral",
+          "Positive"
+        ],
+        "matrix": [
+          [
+            617,
+            141,
+            33
+          ],
+          [
+            129,
+            162,
+            51
+          ],
+          [
+            75,
+            133,
+            1818
+          ]
+        ]
+      },
+      "confidence_stats": {
+        "mean_confidence": 0.7619,
+        "mean_confidence_correct": 0.802,
+        "mean_confidence_incorrect": 0.5765
+      }
+    },
+    {
+      "model_name": "TF-IDF + Calibrated Linear SVM",
+      "accuracy": 0.8427,
+      "macro_f1": 0.6535,
+      "weighted_f1": 0.8218,
+      "macro_precision": 0.6973,
+      "macro_recall": 0.656,
+      "per_class": {
+        "Negative": {
+          "precision": 0.7344,
+          "recall": 0.8496,
+          "f1_score": 0.7878,
+          "support": 791
+        },
+        "Neutral": {
+          "precision": 0.4444,
+          "recall": 0.1637,
+          "f1_score": 0.2393,
+          "support": 342
+        },
+        "Positive": {
+          "precision": 0.9131,
+          "recall": 0.9546,
+          "f1_score": 0.9334,
+          "support": 2026
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "Negative",
+          "Neutral",
+          "Positive"
+        ],
+        "matrix": [
+          [
+            672,
+            37,
+            82
+          ],
+          [
+            184,
+            56,
+            102
+          ],
+          [
+            59,
+            33,
+            1934
+          ]
+        ]
+      },
+      "confidence_stats": {
+        "mean_confidence": 0.8146,
+        "mean_confidence_correct": 0.851,
+        "mean_confidence_incorrect": 0.6199
+      }
+    }
+  ],
+  "limitations": [
+    "Proxy Labels: Sentiment targets are derived from customer star ratings (1-2 Negative, 3 Neutral, 4-5 Positive) rather than human-annotated sentiment polarity.",
+    "Neutral Class Ambiguity & Imbalance: 3-star reviews often contain mixed praise and criticism and represent the smallest class, lowering Neutral precision and recall compared to Positive/Negative.",
+    "Bag-of-Ngrams Representation: TF-IDF with 1-2 n-grams captures lexical polarity well but cannot fully model sarcasm, long-range discourse negation, or subtle domain metaphors.",
+    "Domain Generalization: Performance is measured on e-commerce subscription box reviews; accuracy may degrade on unrelated domains (e.g., technical software or medical reviews) without retraining.",
+    "Probability Calibration: Predicted confidence scores reflect statistical separation on the training distribution and should not be interpreted as guaranteed human-level certainty."
+  ]
+}

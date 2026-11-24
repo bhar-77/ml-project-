@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Database & raw downloads
+*.db
+*.sqlite3
+reviewiq/data/raw/
+
+# Node / Frontend
+node_modules/
+dist/
+.vite/
+*.local
+
+# Local helper tools
+.tools/
+
+# OS & Editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
